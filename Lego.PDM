@@ -1,0 +1,164 @@
+[Root]
+Most Recent Package=Standard Setup Package 1
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=c:\Cleber\Instaladores\lego
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=Yes
+Text=No
+Excel=No
+Lotus=No
+Xbase=No
+Exchange=No
+Paradox=No
+Jet 2.x=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+C:\WINDOWS\SYSTEM\Toolbar3.ocx=
+D:\Cleber\Fontes\Lego 1.1\SS32X25.OCX=
+C:\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO360.DLL=
+C:\WINDOWS\SYSTEM\SS32X25.OCX=
+C:\WINDOWS\SYSTEM\DAO360.DLL=
+C:\Cleber\Fontes\Lego 1.1\TOOLBAR3.OCX=
+C:\Cleber\Fontes\Lego 1.1\SS32X25.OCX=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+C:\WINDOWS\SYSTEM\Comdlg32.ocx=
+C:\WINDOWS\SYSTEM\Mscomctl.ocx=
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=
+
+[Package|Standard Setup Package 1|Files Added]
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\WINDOWS\SYSTEM\msvbvm60.dll=Yes
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=Yes
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=Yes
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=Yes
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\SYSTEM\Parse32.dll=Yes
+C:\WINDOWS\SYSTEM\Mscomctl.ocx=Yes
+C:\WINDOWS\SYSTEM\Comdlg32.ocx=Yes
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=Yes
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Cleber\Fontes\Lego 1.1\Lego.exe=Yes
+C:\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO350.DLL=Yes
+C:\WINDOWS\SYSTEM\MSJET35.DLL=Yes
+C:\WINDOWS\SYSTEM\msjter35.dll=Yes
+C:\WINDOWS\SYSTEM\msjint35.dll=Yes
+C:\WINDOWS\SYSTEM\VBAJET32.DLL=Yes
+C:\WINDOWS\SYSTEM\EXPSRV.DLL=Yes
+C:\WINDOWS\SYSTEM\msrd2x35.dll=Yes
+C:\WINDOWS\SYSTEM\MSREPL35.DLL=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\WINDOWS\SYSTEM\VB5DB.DLL=Yes
+C:\Cleber\Fontes\Lego 1.1\SS32X25.OCX=Yes
+C:\Cleber\Fontes\Lego 1.1\TOOLBAR3.OCX=Yes
+C:\WINDOWS\SYSTEM\DBGRID32.OCX=Yes
+C:\WINDOWS\SYSTEM\MSFLXGRD.OCX=Yes
+C:\WINDOWS\SYSTEM\MSHFLXGD.OCX=Yes
+C:\WINDOWS\SYSTEM\MSSTDFMT.DLL=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+C:\WINDOWS\Desktop\Lego=$(AppPath)
+C:\WINDOWS\SYSTEM\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\Parse32.dll=$(AppPath)
+C:\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO360.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\Mscomctl.ocx=$(WinSysPath)
+C:\WINDOWS\SYSTEM\Comdlg32.ocx=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=$(WinSysPath)
+D:\Cleber\Fontes\Lego 1.1\SS32X25.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\Toolbar3.ocx=$(WinSysPath)
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=$(WinSysPath)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\WINDOWS\Desktop\Lego.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\DAO360.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\SS32X25.OCX=$(WinSysPath)
+C:\Cleber\Fontes\Lego 1.1\Lego.exe=$(AppPath)
+C:\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\WINDOWS\SYSTEM\MSJET35.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\msjter35.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\msjint35.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VBAJET32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\EXPSRV.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\msrd2x35.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VB5DB.DLL=$(WinSysPath)
+C:\Cleber\Fontes\Lego 1.1\SS32X25.OCX=$(WinSysPath)
+C:\Cleber\Fontes\Lego 1.1\TOOLBAR3.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\DBGRID32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSHFLXGD.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSSTDFMT.DLL=$(WinSysPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+C:\WINDOWS\Desktop\Lego=Yes
+C:\WINDOWS\SYSTEM\Parse32.dll=Yes
+C:\WINDOWS\Desktop\Lego.exe=Yes
+C:\Cleber\Fontes\Lego 1.1\Lego.exe=Yes
+
+[Package|Standard Setup Package 1|Distribution]
+Type=multi
+Size=1.2 MB
+Title=Lego
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=Lego
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|Lego]
+Icon1=Lego
+Title1=Lego
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=c:\Cleber\Instaladores\lego
+ProjectFolder=C:\Cleber\Fontes\Lego 1.1
+ServerSideCab=
+File1=c:\Cleber\Instaladores\lego\setup.exe
+File2=c:\Cleber\Instaladores\lego\Setup.Lst
+File3=c:\Cleber\Instaladores\lego\Lego1.CAB
+File4=c:\Cleber\Instaladores\lego\Lego2.CAB
+File5=c:\Cleber\Instaladores\lego\Lego3.CAB
+File6=c:\Cleber\Instaladores\lego\Lego4.CAB
+File7=c:\Cleber\Instaladores\lego\Lego5.CAB
+Handler1=PDWizard.FloppyDplySubWiz
+Handler2=PDWizard.FolderDplySubWiz
+Handler3=PDWizard.WebPostDplySubWiz

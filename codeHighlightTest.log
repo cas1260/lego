@@ -1,0 +1,8 @@
+Line 15: Class DevDomainCodeHighlightPr1.CodeHighlight of control CodeHighlight1 was not a loaded control class.
+Line 21: The property name _ExtentX in CodeHighlight1 is invalid.
+Line 22: The property name _ExtentY in CodeHighlight1 is invalid.
+Line 23: The property name Language in CodeHighlight1 is invalid.
+Line 24: The property name KeywordColor in CodeHighlight1 is invalid.
+Line 25: The property name OperatorColor in CodeHighlight1 is invalid.
+Line 26: The property name DelimiterColor in CodeHighlight1 is invalid.
+Line 28: The property name HighlightCode in CodeHighlight1 is invalid.

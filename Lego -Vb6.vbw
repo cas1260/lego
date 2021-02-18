@@ -1,0 +1,11 @@
+Global = 0, 0, 0, 0, C
+Form2 = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FrmPrincipal = 22, 22, 397, 368, , 0, 0, 0, 0, C
+Module1 = 0, 0, 0, 0, C
+OnFormMenu = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+Compl = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FrmM = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FrmMenu = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FileOperation = 0, 0, 0, 0, C
+FrmTeste = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmSplash = 44, 44, 508, 325, , 0, 0, 0, 0, C

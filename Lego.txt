@@ -1,0 +1,185 @@
+Public Function SalvarProjeto(Pas As Boolean)
+On Error Resume Next
+Dim Com As CommonDialog, x As Long, Y As Long
+Dim Texto As String
+Set Com = FrmPrincipal.CommonDialog1
+'Com.FileTitle = "Salvar"
+Com.Filter = "Arquivo do Lego |*.Leg|Projetos | *.Pje| Todos os Arquivos |*.*"
+x = 0
+Do While x <> FrmPrincipal.Prog.ListCount
+    FrmPrincipal.Prog.ListIndex = x
+    If Pas = True Then
+        Com.FileName = FrmPrincipal.Prog.Text
+        Com.CancelError = True
+        Com.ShowSave
+    End If
+ 
+    With FrmTela(x)
+        Texto = "Type Tela" + Chr(10)
+        Texto = Texto + String(4, " ") + "Nome       = " + FrmPrincipal.Prog.Text + Chr(10)
+        Texto = Texto + String(4, " ") + "Cor. Fund. = " + Str(.BackColor) + Chr(10)
+        Texto = Texto + String(4, " ") + "Legenda    = " + .Caption + Chr(10)
+        Texto = Texto + String(4, " ") + "Tam-X      = " + Str(.Height) + Chr(10)
+        Texto = Texto + String(4, " ") + "Tam-X      = " + Str(.Width) + Chr(10)
+        Texto = Texto + String(4, " ") + "MaxTela    = " + .Max + Chr(10)
+        Texto = Texto + "Fim Type Tela" + Chr(10) + Chr(10)
+    End With
+    Y = 1
+    Do While Y <> FrmTela(x).Cmd.Count
+        With FrmTela(x).Cmd(Y)
+            Texto = Texto + "Type Tela.Cmd" + Chr(10)
+            Texto = Texto + String(4, " ") + "Nome       = " + .ToolTipText + Chr(10)
+            Texto = Texto + String(4, " ") + "Legenda    = " + .Caption + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-X      = " + Str(.Height) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-Y      = " + Str(.Width) + Chr(10)
+            Texto = Texto + String(4, " ") + "Abilitar   = Sim" + Chr(10)
+            Texto = Texto + String(4, " ") + "Coluna     = " + Str(.Top) + Chr(10)
+            Texto = Texto + String(4, " ") + "Linha      = " + Str(.Left) + Chr(10)
+            Texto = Texto + "Fim Type Tela.Cmd" + Chr(10) + Chr(10)
+         End With
+         Y = Y + 1
+    Loop
+    Y = 1
+    Do While Y <> FrmTela(x).Lbl.Count
+        With FrmTela(x).Lbl(Y)
+            Texto = Texto + "Type Tela.Lbl" + Chr(10)
+            Texto = Texto + String(4, " ") + "Nome       = " + .ToolTipText + Chr(10)
+            Texto = Texto + String(4, " ") + "Legenda    = " + .Caption + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-X      = " + Str(.Height) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-Y      = " + Str(.Width) + Chr(10)
+            Texto = Texto + String(4, " ") + "Coluna     = " + Str(.Top) + Chr(10)
+            Texto = Texto + String(4, " ") + "Linha      = " + Str(.Left) + Chr(10)
+            Texto = Texto + String(4, " ") + "Cor. Fund. = " + Str(.BackColor) + Chr(10)
+            Texto = Texto + String(4, " ") + "Cor. Letra = " + Str(.ForeColor) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tamanho    = " + Str(.FontSize) + Chr(10)
+            Texto = Texto + String(4, " ") + "Estilo     = " + .FontName + Chr(10)
+            Texto = Texto + "Fim Type Tela.Lbl" + Chr(10) + Chr(10)
+        End With
+        Y = Y + 1
+    Loop
+    Y = 1
+    Do While Y <> FrmTela(x).Cbo.Count
+        With FrmTela(x).Cbo(Y)
+            Texto = Texto + "Type Tela.Cbo" + Chr(10)
+            Texto = Texto + String(4, " ") + "Nome       = " + .ToolTipText + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-Y      = " + Str(.Width) + Chr(10)
+            Texto = Texto + String(4, " ") + "Coluna     = " + Str(.Top) + Chr(10)
+            Texto = Texto + String(4, " ") + "Linha      = " + Str(.Left) + Chr(10)
+            Texto = Texto + "Fim Type Tela.Cbo" + Chr(10) + Chr(10)
+        End With
+        Y = Y + 1
+    Loop
+    Y = 1
+    Do While Y <> FrmTela(x).Txt.Count
+        With FrmTela(x).Txt(Y)
+            Texto = Texto + "Type Tela.Txt" + Chr(10)
+            Texto = Texto + String(4, " ") + "Nome       = " + .ToolTipText + Chr(10)
+            Texto = Texto + String(4, " ") + "Texto      = " + .Text + Chr(10)
+            Texto = Texto + String(4, " ") + "Cor. Fundo = " + Str(.BackColor) + Chr(10)
+            Texto = Texto + String(4, " ") + "Cor. Letra = " + Str(.ForeColor) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tamanho    = " + Str(.FontSize) + Chr(10)
+            Texto = Texto + String(4, " ") + "Estilo     = " + .FontName + Chr(10)
+            Texto = Texto + String(4, " ") + "Coluna     = " + Str(.Top) + Chr(10)
+            Texto = Texto + String(4, " ") + "Linha      = " + Str(.Left) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-X      = " + Str(.Height) + Chr(10)
+            Texto = Texto + String(4, " ") + "Tam-Y      = " + Str(.Width) + Chr(10)
+            Texto = Texto + String(4, " ") + "Chr.       = " + .PasswordChar + Chr(10)
+            Texto = Texto + "Fim Type Tela.Txt" + Chr(10) + Chr(10)
+        End With
+        Y = Y + 1
+    Loop
+    Y = 0
+    If Menus(FrmTela(x).Cont.Caption).mp1.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp1.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma1.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma1(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp1.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).mp2.Visible = True Then
+        Y = 0
+        Texto = Texto + "Type Menus" + Menus(FrmTela(x).Cont.Caption).mp2.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma2.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma2(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Y = 0
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp2.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).mp3.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp3.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma3.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma3(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp3.Caption + Chr(10) + Chr(10)
+    End If
+    
+    If Menus(FrmTela(x).Cont.Caption).mp4.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp4.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma4.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma4(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp4.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).mp5.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp5.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma5.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma5(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp5.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).mp6.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp6.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma6.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma6(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp6.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).Mp7.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).Mp7.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma7.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma7(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).Mp7.Caption + Chr(10) + Chr(10)
+    End If
+    If Menus(FrmTela(x).Cont.Caption).mp8.Visible = True Then
+        Texto = Texto + "Type Menus " + Menus(FrmTela(x).Cont.Caption).mp8.Caption + Chr(10)
+        Do While Y <> Menus(FrmTela(x).Cont.Caption).ma8.Count
+            With Menus(FrmTela(x).Cont.Caption)
+                Texto = Texto + String(4, " ") + ">" + .ma8(Y).Caption + Chr(10)
+            End With
+            Y = Y + 1
+        Loop
+        Texto = Texto + "Fim Type Menus " + Menus(FrmTela(x).Cont.Caption).mp8.Caption + Chr(10) + Chr(10)
+    End If
+
+       
+    x = x + 1
+   
+    If x <> FrmPrincipal.Prog.ListCount Then
+        FrmPrincipal.Prog.ListIndex = x
+    End If
+    SaveFile1 Com.FileName, Texto
+Loop
+
+End Function

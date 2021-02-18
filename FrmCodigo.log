@@ -1,0 +1,7 @@
+Line 101: Class Lego.CodeHighlight of control TxtCod was not a loaded control class.
+Line 107: The property name _extentx in TxtCod is invalid.
+Line 108: The property name _extenty in TxtCod is invalid.
+Line 109: The property name operatorcolor in TxtCod is invalid.
+Line 110: The property name delimitercolor in TxtCod is invalid.
+Line 112: The property name functioncolor in TxtCod is invalid.
+Line 101: Property Font in TxtCod could not be set.

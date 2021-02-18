@@ -1,0 +1,21 @@
+
+Option Explicit
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA"
+(ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam
+As Long) As Long
+Private Const EM_LINEFROMCHAR = &HC9
+Private Const EM_LINEINDEX = &HBB
+
+Private Sub Text1_Change
+  Dim nLine&
+  Dim nLineStart&
+
+  nLine& = SendMessage(Text1.hwnd, EM_LINEFROMCHAR, -1, 0)
+  nLineStart& = SendMessage(Text1.hwnd, EM_LINEINDEX, -1, 0)
+
+  Label1.Caption = "Row : " + Format$(nLine& + 1, "0") + " Col: " +
+Format$(Text1.SelStart + Text1.SelLength - nLineStart& + 1, "0")
+End Sub
+
+ 
+ 

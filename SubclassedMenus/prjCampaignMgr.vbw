@@ -1,0 +1,5 @@
+frmMain = 66, 66, 623, 477, C, 44, 44, 601, 455, C
+modGlobalDeclarations = 132, 132, 689, 543, C
+modWinProc = 22, 22, 703, 535, C
+frmAbout = 0, 0, 0, 0, C, 44, 44, 601, 455, C
+MenuX = 132, 132, 475, 478, C, 66, 66, 409, 412, C

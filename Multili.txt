@@ -1,0 +1,17 @@
+Option Explicit
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal _
+   hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Private Const EM_GETLINECOUNT = &HBA
+Private Const EM_LINEFROMCHAR = &HC9
+
+Private Sub Text1_Click()
+   Dim curline As Long, numlines As Long
+   
+   ' Get line number from start of text selection
+   curline = SendMessage(Text1.hwnd, EM_LINEFROMCHAR, Text1.SelStart, 0&)
+   
+   ' Get line count
+   numlines = SendMessage(Text1.hwnd, EM_GETLINECOUNT, 0&, 0&)
+   
+   Caption = "Line " & (curline + 1) & " of " & numlines
+End Sub 

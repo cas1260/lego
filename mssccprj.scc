@@ -1,0 +1,21 @@
+SCC = This is a Source Code Control file
+
+[High.vbp]
+SCC_Aux_Path = "D:\Cleber\VSS"
+SCC_Project_Name = "$/Fontes/Lego 1.1", VPNCAAAA
+
+[Lego.vbp]
+SCC_Aux_Path =D:\Cleber\VSS,
+SCC_Project_Name ="$/Fontes/Lego 1.1", VPNCAAAA
+
+[Lego 1.1.vbp]
+SCC_Aux_Path = "D:\Cleber\VSS"
+SCC_Project_Name = "$/Fontes/Lego 1.1", VPNCAAAA
+
+[Project1.vbp]
+SCC_Aux_Path = "D:\Cleber\VSS"
+SCC_Project_Name = "$/Fontes/Lego 1.1", VPNCAAAA
+
+[TestHighlight.vbp]
+SCC_Aux_Path = "D:\Cleber\VSS"
+SCC_Project_Name = "$/Fontes/Lego 1.1", VPNCAAAA

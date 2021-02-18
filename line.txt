@@ -1,0 +1,36 @@
+Public Declare Function SendMessage Lib "user32" Alias "SendMessageA" ( ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+
+Public Const EM_GETLINE = &HC4
+
+Public Function GetLine(txtBox As TextBox, LineIndex As Long) As String
+  Dim bBuffer()  As Byte   'the byte array
+  Dim lngLength  As Long   'the max length of the line
+  Dim sRetVal    As String 'the text to return
+
+  'check to see if the LineIndex value is valid
+  If LineIndex >= LineCount(txtBox) Then
+     'call the LineCount function shown above
+     Exit Function 'bale out
+  End If
+
+  'get the length of the line
+  lngLength = LineLen(txtBox, GetCharFromLine(txtBox, LineIndex))
+  'check that there is any text on the line
+  If lngLength < 1 Then
+     Exit Function
+  End If
+
+  'ReDim the byte array
+  ReDim bBuffer(lngLength)
+
+  'Save the length in the first word of the array
+  bBuffer(0) = lngLength And 255
+  bBuffer(1) = lngLength  256
+
+  'Send the message
+  SendMessage txtBox.hWnd, EM_GETLINE, LineIndex, bBuffer(0)
+
+  'Finally convert the byte array into a string and return it
+  sRetVal = Left$(StrConv(bBuffer, vbUnicode), lngLength)
+  GetLine = sRetVal
+End Function

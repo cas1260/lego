@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="pedro">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>PARSE32.DLL</H1>
+
+<P>Esta es una version de <B>EVALUACION</B> con <B>CADUCIDAD</B>, si desea
+obtener la version definiva debe ponerse en contacto conmigo por <A HREF="mailto:pmaicas@jet.es">e-mail</A>.
+Esta version de <B>evaluaci&oacute;n</B> se suminstra gratis, sin <B>ning&uacute;n
+soporte ni garant&iacute;a de buen funcionamiento</B>.</P>
+
+<P>Esta DLL implementa un analizador de expresiones matem&aacute;ticas
+que permite evaluar f&oacute;rmulas escritas en modo texto, <B>resolver
+las prioridades</B> de las operaciones teniendo en cuenta par&eacute;ntesis,
+etc... Incluye funciones trigonom&eacute;tricas, logar&iacute;tmicas, aritm&eacute;ticas
+y l&oacute;gicas. Permite definir variables con un nombre al que se le
+asocia un valor o una expresion matem&aacute;tica. Proximamente la DLL
+permitir&aacute; tambien definir funciones de usuario, con un n&uacute;mero
+ilimitado de par&aacute;metros e incluir&aacute; un lenguaje script.</P>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H2 ALIGN=CENTER>CONTENIDO</H2>
+
+<UL>
+<LI><A HREF="#PRIMER">Un primer vistazo</A> al evaluador de f&oacute;rmulas
+matem&aacute;ticas.</LI>
+
+<LI><A HREF="#FUNCIONES">Funciones exportadas</A> por la DLL.</LI>
+
+<LI><A HREF="#OPERACIONES">Operaciones</A> y funciones, por orden de prioridad.</LI>
+
+<LI><A HREF="#ERRORES">Codigos de error</A> proporcionados por la DLL.</LI>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H2 ALIGN=CENTER><A NAME="PRIMER"></A>UN PRIMER VISTAZO</H2>
+
+<P>El evaluador de expresiones matem&aacute;ticas trabaja exclusivamente
+con n&uacute;meros en <B>coma flotante</B> de doble precisi&oacute;n en
+formato <B>IEEE</B>. Una variable <B>Double</B> se almacena como un n&uacute;mero
+de <B>64 bits</B> (8 bytes) que var&iacute;a entre -1.79769313486232E308
+y -4.94065645841247E-324 para los valores negativos, desde 4.94065645841247E-324
+a 1.797693134862325E308 para los valores positivos y 0. </P>
+
+<P>Para acceder a las funciones del evaluador se requiere un<B> handle</B>
+que identifica el contexto en el se usa el evaluador. Las variables y funciones
+se hallan asociadas al contexto (handle) en el que fueron creadas y no
+son accesibles desde otros contextos.</P>
+
+<P>Por defecto, el evaluador <B>no</B> distingue entre may&uacute;sculas
+y min&uacute;sculas, aunque es posible forzar un comportamiento distinto.
+Cuando se fuerza al evaluador a distinguir entre mayusculas y minusculas
+las <B>funciones predefinidas</B> deben escribirse en <B>minusculas</B>
+(sin, cos, sqrt, ...)</P>
+
+<P>El evaluador genera un error si encuentra caracteres ilegales en una
+expresi&oacute;n, para los nombres de <B>variables</B> y funciones se admiten
+<B>letras, numeros</B>(excepto en la primera posicion) y el caracter <B>subrayado</B>.
+(Ej: A68, K_IU, _ABC, ..) Para los <B>n&uacute;meros</B> se usa el <B>punto
+decimal,</B> no la coma, y cuando se escribe en formato mantisa-exponente
+se usa la letra <B>E</B> para identificar la parte del <B>exponente</B>.
+(Ej: 123.45, 1.23E12, ...)</P>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H2 ALIGN=CENTER><A NAME="FUNCIONES"></A>FUNCIONES EXPORTADAS POR LA DLL</H2>
+
+<P><B>Lo que sigue es una lista de las funciones p&uacute;blicas de la
+DLL, NO de las funciones del evaluador.</B></P>
+
+<P><B>HANDLE ParseInit()</B></P>
+
+<UL>
+<P>Esta funcion obtiene un handle a un contexto del evaluador. Debe usarse
+esta funcion antes que ninguna otra para obtener el handle.</P>
+</UL>
+
+<P><B>ParseEnd(HANDLE)</B></P>
+
+<UL>
+<P>Esta funcion libera un contexto (handle) del evaluador. Debe usarse
+esta funcion al terminar los c&aacute;lculos para liberar los recursos
+asociados a un handle.</P>
+</UL>
+
+<P><B>ParseReset(HANDLE, INT flags) </B></P>
+
+<UL>
+<P>Esta funcion repone un contexto del evaluador a sus condiciones iniciales,
+el valor flags permite variar el comportamiento del evaluador. Use flags
+= 0 para mantener compatibilidad con versiones posteriores. Esta funcion
+borra todas las variables del usuario, dejando definidas solamente las
+funciones predefinidas del sistema (sin, cos, sqrt, ...).</P>
+</UL>
+
+<P><B>INT GetError(HANDLE,STRING buffer)</B> </P>
+
+<UL>
+<P>Esta funcion retorna un n&uacute;mero de error, adem&aacute;s retorna
+un texto explicativo del error si se suministra un buffer (puntero distinto
+de NULL). Esta funcion se usa cuando se detecta una condicion de error
+en la evaluacion de una funcion si se desea saber cual es el error.</P>
+</UL>
+
+<P><B>DelValue(HANDLE, STRING nombre_variable) </B></P>
+
+<UL>
+<P>Borra una variable del contexto del evaluador dejandola indefinida.</P>
+</UL>
+
+<P><B>BOOL DefValue(HANDLE,STRING nombre_variable) </B></P>
+
+<UL>
+<P>Devuelve TRUE si la variable est&aacute; definida y FALSE si no lo est&aacute;.</P>
+</UL>
+
+<P><B>BOOL GetValue(HANDLE,STRING texto_expresion,DOUBLE* valor_de_retorno)</B>
+</P>
+
+<UL>
+<P>Evalua una expresion matem&aacute;tica y coloca el resultado en un <B>double</B>.
+La funcion devuelve <B>TRUE</B> si ha podido evaluar la espresion y devuelve
+<B>FALSE</B> si se ha producido un error. Se pruebe obtener el c&oacute;digo
+de error llamando posteriormente a <B>GetError</B>.</P>
+
+<P>Esta funcion <B>constituye</B> la parte fundamental del <B>evaluador</B>
+matem&aacute;tico, el resto de funciones se han implementado con el &uacute;nico
+fin de dar soporte a esta funcion.</P>
+</UL>
+
+<P><B>SetValue(HANDLE,STRING nombre_variable,DOUBLE valor) </B></P>
+
+<UL>
+<P>Asigna un valor a una variable, crea una nueva variable o modifica una
+variable existente. </P>
+</UL>
+
+<P><B>SetValueTxt(HANDLE,STRING nombre_variable,STRING valor) </B></P>
+
+<UL>
+<P>Esta funcion asigna a una variable un valor en modo texto, el string
+que se asigna a la variable suele contener una expresion matem&aacute;tica.
+Esta funcion no eval&uacute;a el contenido del string, la evaluacion se
+producir&aacute; cuando se requiera en una llamada a <B>GetValue</B>. </P>
+</UL>
+
+<P><B>SetValueCte(HANDLE,STRING nombre_variable,DOUBLE valor)</B> </P>
+
+<UL>
+<P>Asigna un valor constante. Cuando se asigna a una variable un valor
+con esta funcion, la variable se convierte en constante, su contenido ya
+no se puede modificar, solo se puede eliminar en una llamada a <B>ParseReset</B>.</P>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H2 ALIGN=CENTER><A NAME="OPERACIONES"></A>OPERACIONES (por orden de prioridad)</H2>
+
+<P><B>1.- expresion ? valor_true : valor_false </B></P>
+
+<UL>
+<P>Operacion ternaria, igual a la de<B> C</B>, que eval&uacute;a la expresion
+a la izquierda del signo <B>?</B> y produce como resultado uno u otro valor
+seg&uacute;n la expresion sea verdadera o falsa. Ejemplo: <B>a &gt; b ?
+a : b</B></P>
+</UL>
+
+<P><B>2.- and, or, xor</B> </P>
+
+<UL>
+<P>Operaciones l&oacute;gicas, tratan el valor <B>0</B> como <B>false</B>
+y cualquier valor <B>distinto de 0</B> como <B>true</B>.</P>
+</UL>
+
+<P><B>3.- =, &lt;&gt;, &lt;, &lt;=, &gt;, &gt;= </B></P>
+
+<UL>
+<P>Operadores l&oacute;gicos de igualdad y desigualadad, evaluan a<B> true(1)
+o false(0)</B>.</P>
+</UL>
+
+<P><B>4.- +, -</B></P>
+
+<UL>
+<P>Operaciones aritm&eacute;tidas, suma y resta.</P>
+</UL>
+
+<P><B>5.- *, /</B></P>
+
+<UL>
+<P>Operaciones artm&eacute;ticas, multiplicacion y division.</P>
+</UL>
+
+<P><B>6.- not, +, -, ^</B></P>
+
+<UL>
+<P>Incluye los operadores unarios (not l&oacute;gico, y +- unario), y la
+e<B>xponenciacion</B>.</P>
+</UL>
+
+<P><B>7.- ( expresion )</B></P>
+
+<UL>
+<P>Los <B>par&eacute;ntesis </B>provocan que la expresion encerrada entre
+ellos aumente su prioridad sobre cualquier operacion que se encuentre fuera
+del par&eacute;ntesis.</P>
+</UL>
+
+<P><B>8.- constantes, variables, funciones, ...</B></P>
+
+<UL>
+<P>Las funciones y las variables que contienen una expresion evaluable
+se eval&uacute;an con l<B>a m&aacute;s alta prioridad</B>, las constantes
+y variables que contienen un valor num&eacute;rico se asimilan tambien
+a una evaluacion con la mas alta prioridad.</P>
+
+<P>Las siguientes funciones se encuentran predefinidas en la librer&iacute;a:</P>
+
+<P>Funciones trigonom&eacute;tricas (<B>sin, cos, tan</B>) y sus inversas
+(<B>asin, acos, atan</B>), hiperb&oacute;licas (<B>sinh, cosh, tanh</B>),
+logaritmo neperiano (<B>ln</B>), logaritmo decimal (<B>log</B>), exponenciacion
+(<B>exp</B>), valor absoluto (<B>abs</B>), funciones de parte entera (<B>ceil
+y floor</B>) y ra&iacute;z cuadrada (<B>sqrt</B>).</P>
+
+<P>Se encuentra tambien predefinido el valor de PI (<B>pi</B>), pero <B>no</B>
+se ha definido el valor <B>e</B> (base de logaritmos naturales), sin embargo
+este se puede calcular usando: <B>exp(1)</B></P>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H2 ALIGN=CENTER><A NAME="ERRORES"></A>CODIGOS DE ERROR</H2>
+
+<P>Cuando la funcion <B>GetValue</B> devuelve <B>FALSE</B>, se puede obtener
+un n&uacute;mero de error llamando a la funcion <B>GetError</B>. Los c&oacute;digos
+de error que puede devolver esta funcion son los siguientes.</P>
+
+<P><B>#define PID_RANGO 1 </B></P>
+
+<UL>
+<P>Error en la librer&iacute;a matem&eacute;tica, una funci&oacute;n ha
+recibido un par&aacute;metro fuera de rango.</P>
+</UL>
+
+<P><B>#define PID_PARENTESIS 2</B> </P>
+
+<UL>
+<P>Falta un par&eacute;ntesis de apertura o de cierre.</P>
+</UL>
+
+<P><B>#define PID_ELEMENTO 3</B> </P>
+
+<UL>
+<P>Se encontro un nombre de variable o funcion que no est&aacute; definido.</P>
+</UL>
+
+<P><B>#define PID_DIVISION 4 </B></P>
+
+<UL>
+<P>Division por cero.</P>
+</UL>
+
+<P><B>#define PID_TERNARIO 5 </B></P>
+
+<UL>
+<P>Error en operador ternario, seguramente por falta del signo <B>':'</B></P>
+</UL>
+
+<P><B>#define PID_EXTRATXT 6 </B></P>
+
+<UL>
+<P>Quedan elementos sin evaluar.</P>
+</UL>
+
+<P><B>#define PID_CIRCULAR 7 </B></P>
+
+<UL>
+<P>Referencia circular.</P>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+</BODY>
+</HTML>
